@@ -1,117 +1,54 @@
-const bollywoodLatestPosts=(req,res)=>{
-    res.send([
-        {
-            id:1,
-            title:"Johnny Depp Congratulations!",
-            image:"https://tse4.mm.bing.net/th?q=Sushant+Singh+Rajput+Outline&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
-            descripition:"Johnny Depp to try to stage a Hollywood comeback after winning defamation suit against Amber Heard.Johnny Depp is an American actor, producer and musician. He has appeared in films, television series and video games.",
-            date:'11-1-23',
-            
-          },
-          {
-            id:2,
-            title:"Johnny Depp Congratulations!",
-            image:"https://tse4.mm.bing.net/th?q=Sushant+Singh+Rajput+Outline&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
-            descripition:"Johnny Depp to try to stage a Hollywood comeback after winning defamation suit against Amber Heard.Johnny Depp is an American actor, producer and musician. He has appeared in films, television series and video games.",
-            date:'11-1-23',
-            
-          },
-          {
-            id:3,
-            title:"Johnny Depp Congratulations!",
-            image:"https://tse4.mm.bing.net/th?q=Sushant+Singh+Rajput+Outline&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
-            descripition:"Johnny Depp to try to stage a Hollywood comeback after winning defamation suit against Amber Heard.Johnny Depp is an American actor, producer and musician. He has appeared in films, television series and video games.",
-            date:'11-1-23',
-            
-          }
-    ])
-}
+const { findAllFromDb } = require("../database/connection")
 
+  const bollywoodLatestPosts=async(req,res)=>{
+      try {
+        const bollywoodLatestPosts=await findAllFromDb({},"bollywoodLatestPosts")
+        return res.status(200).send({bollywoodLatestPosts:bollywoodLatestPosts})
+      } catch (error) {
+        console.log("Error occur in  fetching data",error)
+       return res.status(500).send({message:"something went wrong"})
+      }
+  }  
 
-
-const bollywoodArticles=(req,res)=>{
-  res.send([{
-    id:1,
-    name:'lorem',
-    image:"https://tse4.mm.bing.net/th?q=Sushant+Singh+Rajput+Outline&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
-    descripition:"lorem dfgsbgr dfgfs gsf fbfgd",
-    date:"17-1-23"
-  },
-  {
-    id:1,
-    name:'lorem',
-    image:"https://tse4.mm.bing.net/th?q=Sushant+Singh+Rajput+Outline&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
-    descripition:"lorem dfgsbgr dfgfs gsf fbfgd",
-    date:"17-1-23"
-  },
-  {
-    id:1,
-    name:'lorem',
-    image:"https://tse4.mm.bing.net/th?q=Sushant+Singh+Rajput+Outline&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
-    descripition:"lorem dfgsbgr dfgfs gsf fbfgd",
-    date:"17-1-23"
-  }])
-}
-
-
-const bollwoodPosts=(req,res)=>{
-  res.send([
-    {
-    id:1,
-    number:'2',
-    image:"https://tse4.mm.bing.net/th?q=Sushant+Singh+Rajput+Outline&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
-    name:"lorem",
-    date:"17-1-23"
-    },
-    {
-      id:2,
-      number:'3',
-      image:"https://tse4.mm.bing.net/th?q=Sushant+Singh+Rajput+Outline&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
-      name:"lorem",
-      date:"17-1-23"
-    },
-    {
-        id:3,
-        number:'4',
-        image:"https://tse4.mm.bing.net/th?q=Sushant+Singh+Rajput+Outline&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
-        name:"lorem",
-        date:"17-1-23"
+  const bollywoodArticles=async(req,res)=>{
+    try {
+      const bollywoodArticles =await findAllFromDb({},"bollywoodArticles")
+      return res.status(200).send({bollywoodArticle:bollywoodArticles})
+    } catch (error) {
+      console.log("Error occur in  fetching data",error)
+     return res.status(500).send({message:"something went wrong"})
     }
+  }
 
-])
+
+const bollwoodPosts= async(req,res)=>{
+  try {
+    const bollwoodPosts =await findAllFromDb({},"bollwoodPosts")
+    return res.status(200).send({bollwoodPosts:bollwoodPosts})
+  } catch (error) {
+    console.log("Error occur in  fetching data",error)
+   return res.status(500).send({message:"something went wrong"})
+  }
 }
 
-const bollywoodSidePost=(req,res)=>{
-  res.send([{
-    id:1,
-    number:'2',
-    image:"https://tse4.mm.bing.net/th?q=Sushant+Singh+Rajput+Outline&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
-    title:"lorem",
-    content:'lorem fvfsbvfsdb fvdics dvdufdsjn'
-  }])
+const bollywoodSidePost=async(req,res)=>{
+  try {
+    const bollywoodSidePost =await findAllFromDb({},"bollywoodSidePost")
+    return res.status(200).send({bollywoodSidePost:bollywoodSidePost})
+  } catch (error) {
+    console.log("Error occur in  fetching data",error)
+   return res.status(500).send({message:"something went wrong"})
+  }
 }
 
-const bollywoodStories=(req,res)=>{
-  res.send([
-    {
-    id:1,
-    name:'lorem',
-    content:'Interstellar is a 2014 epic science fiction film co-written, directed, and produced by Christopher Nolan. It stars Matthew McConaughey, Anne Hathaway, Jessica Chastain, Bill Irwin, Ellen Burstyn, Matt Damon, and Michael Caine.',
-    date:'17-1-23',
-    },
-    {
-      id:2,
-      name:'lorem',
-      content:'Interstellar is a 2014 epic science fiction film co-written, directed, and produced by Christopher Nolan. It stars Matthew McConaughey, Anne Hathaway, Jessica Chastain, Bill Irwin, Ellen Burstyn, Matt Damon, and Michael Caine.',
-      date:'17-1-23',
-      },
-      {
-        id:3,
-        name:'lorem',
-        content:'Interstellar is a 2014 epic science fiction film co-written, directed, and produced by Christopher Nolan. It stars Matthew McConaughey, Anne Hathaway, Jessica Chastain, Bill Irwin, Ellen Burstyn, Matt Damon, and Michael Caine.',
-        date:'17-1-23',
-        },
-])
+const bollywoodStories=async(req,res)=>{
+  try {
+    const bollywoodStories=await findAllFromDb({},"bollywoodStories")
+    return res.status(200).send({bollywoodStories:bollywoodStories})
+  } catch (error) {
+    console.log("Error occur in  fetching data",error)
+   return res.status(500).send({message:"something went wrong"})
+  }
 }
 
 module.exports.getbollywoodLatesPosts=bollywoodLatestPosts;

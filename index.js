@@ -9,7 +9,8 @@ const fitness=require('./pages/fitness')
 const home=require('./pages/home')
 const food=require('./pages/food')
 const cors=require('cors')
-app.use(cors())
+app.use(cors({origin:['http://10.170.63.237','http://blogpost.com']}))
+//ip address 
 
 app.use('/',technology)
 app.use('/',hollywood)

@@ -1,117 +1,56 @@
-const technologyLatestPosts=(req,res)=>{
-    res.send([
-        {
-            id:1,
-            title:"Johnny Depp Congratulations!",
-            image:"https://tse1.mm.bing.net/th?q=Technology+Light&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
-            descripition:"Johnny Depp to try to stage a Hollywood comeback after winning defamation suit against Amber Heard.Johnny Depp is an American actor, producer and musician. He has appeared in films, television series and video games.",
-            date:'11-1-23',
-            type:'hollywood'
-          },
-          {
-            id:2,
-            title:"Johnny Depp Congratulations!",
-            image:"https://tse1.mm.bing.net/th?q=Technology+Light&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
-            descripition:"Johnny Depp to try to stage a Hollywood comeback after winning defamation suit against Amber Heard.Johnny Depp is an American actor, producer and musician. He has appeared in films, television series and video games.",
-            date:'11-1-23',
-            type:'hollywood'
-          },
-          {
-            id:3,
-            title:"Johnny Depp Congratulations!",
-            image:"https://tse1.mm.bing.net/th?q=Technology+Light&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
-            descripition:"Johnny Depp to try to stage a Hollywood comeback after winning defamation suit against Amber Heard.Johnny Depp is an American actor, producer and musician. He has appeared in films, television series and video games.",
-            date:'11-1-23',
-            type:'hollywood'
-          }
-    ])
+const { findAllFromDb } = require("../database/connection")
+
+const technologyLatestPosts=async(req,res)=>{
+  try {
+    const technologyLatestPosts=await findAllFromDb({},"technologyLatestPosts")
+    return res.status(200).send({technologyLatestPosts:technologyLatestPosts})
+  } catch (error) {
+    console.log("Error occur in  fetching data",error)
+   return res.status(500).send({message:"something went wrong"})
+  }
 }
 
 
 
-const technologyArticles=(req,res)=>{
-  res.send([{
-    id:1,
-    name:'lorem',
-    image:"https://tse1.mm.bing.net/th?q=Technology+Light&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
-    descripition:"lorem dfgsbgr dfgfs gsf fbfgd",
-    date:"17-1-23"
-  },
-  {
-    id:1,
-    name:'lorem',
-    image:"https://tse1.mm.bing.net/th?q=Technology+Light&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
-    descripition:"lorem dfgsbgr dfgfs gsf fbfgd",
-    date:"17-1-23"
-  },
-  {
-    id:1,
-    name:'lorem',
-    image:"https://tse1.mm.bing.net/th?q=Technology+Light&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
-    descripition:"lorem dfgsbgr dfgfs gsf fbfgd",
-    date:"17-1-23"
-  }])
+const technologyArticles=async(req,res)=>{
+  try {
+    const technologyArticles=await findAllFromDb({},"technologyArticles")
+    return res.status(200).send({technologyArticles:technologyArticles})
+  } catch (error) {
+    console.log("Error occur in  fetching data",error)
+   return res.status(500).send({message:"something went wrong"})
+  }
 }
 
 
-const technologyPosts=(req,res)=>{
-  res.send([
-    {
-    id:1,
-    number:'2',
-    image:"https://tse1.mm.bing.net/th?q=Technology+Light&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
-    name:"lorem",
-    date:"17-1-23"
-    },
-    {
-      id:2,
-      number:'3',
-      image:"https://tse1.mm.bing.net/th?q=Technology+Light&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
-      name:"lorem",
-      date:"17-1-23"
-    },
-    {
-        id:3,
-        number:'4',
-        image:"https://tse1.mm.bing.net/th?q=Technology+Light&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
-        name:"lorem",
-        date:"17-1-23"
-    }
-
-])
+const technologyPosts=async(req,res)=>{
+  try {
+    const technologyPosts=await findAllFromDb({},"technologyPosts")
+    return res.status(200).send({technologyPosts:technologyPosts})
+  } catch (error) {
+    console.log("Error occur in  fetching data",error)
+   return res.status(500).send({message:"something went wrong"})
+  }
 }
 
-const technologySidePost=(req,res)=>{
-  res.send([{
-    id:1,
-    number:'2',
-    image:"https://tse1.mm.bing.net/th?q=Technology+Light&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
-    title:"lorem",
-    content:'lorem fvfsbvfsdb fvdics dvdufdsjn'
-  }])
+const technologySidePost=async(req,res)=>{
+  try {
+    const technologySidePost=await findAllFromDb({},"technologySidePost")
+    return res.status(200).send({technologySidePost:technologySidePost})
+  } catch (error) {
+    console.log("Error occur in  fetching data",error)
+   return res.status(500).send({message:"something went wrong"})
+  }
 }
 
-const technologyStories=(req,res)=>{
-  res.send([
-    {
-    id:1,
-    name:'lorem',
-    content:'Interstellar is a 2014 epic science fiction film co-written, directed, and produced by Christopher Nolan. It stars Matthew McConaughey, Anne Hathaway, Jessica Chastain, Bill Irwin, Ellen Burstyn, Matt Damon, and Michael Caine.',
-    date:'17-1-23',
-    },
-    {
-      id:2,
-      name:'lorem',
-      content:'Interstellar is a 2014 epic science fiction film co-written, directed, and produced by Christopher Nolan. It stars Matthew McConaughey, Anne Hathaway, Jessica Chastain, Bill Irwin, Ellen Burstyn, Matt Damon, and Michael Caine.',
-      date:'17-1-23',
-      },
-      {
-        id:3,
-        name:'lorem',
-        content:'Interstellar is a 2014 epic science fiction film co-written, directed, and produced by Christopher Nolan. It stars Matthew McConaughey, Anne Hathaway, Jessica Chastain, Bill Irwin, Ellen Burstyn, Matt Damon, and Michael Caine.',
-        date:'17-1-23',
-        },
-])
+const technologyStories=async(req,res)=>{
+  try {
+    const technologyStories=await findAllFromDb({},"technologyStories")
+    return res.status(200).send({technologyStories:technologyStories})
+  } catch (error) {
+    console.log("Error occur in  fetching data",error)
+   return res.status(500).send({message:"something went wrong"})
+  }
 }
 
 module.exports.gettechnologyLatesPosts=technologyLatestPosts;
@@ -120,4 +59,5 @@ module.exports.gettechnologyPosts=technologyPosts;
 module.exports.gettechnologySidePost=technologySidePost;
 module.exports.gettechnologyStories=technologyStories;
 
- 
+
+

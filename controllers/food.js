@@ -1,117 +1,56 @@
-const foodLatestPosts=(req,res)=>{
-    res.send([
-        {
-            id:1,
-            title:"Johnny Depp Congratulations!",
-            image:"https://tse1.mm.bing.net/th?q=Food+Fruit&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
-            descripition:"Johnny Depp to try to stage a Hollywood comeback after winning defamation suit against Amber Heard.Johnny Depp is an American actor, producer and musician. He has appeared in films, television series and video games.",
-            date:'11-1-23',
-            type:'hollywood'
-          },
-          {
-            id:2,
-            title:"Johnny Depp Congratulations!",
-            image:"https://tse1.mm.bing.net/th?q=Food+Fruit&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
-            descripition:"Johnny Depp to try to stage a Hollywood comeback after winning defamation suit against Amber Heard.Johnny Depp is an American actor, producer and musician. He has appeared in films, television series and video games.",
-            date:'11-1-23',
-            type:'hollywood'
-          },
-          {
-            id:3,
-            title:"Johnny Depp Congratulations!",
-            image:"https://tse1.mm.bing.net/th?q=Food+Fruit&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
-            descripition:"Johnny Depp to try to stage a Hollywood comeback after winning defamation suit against Amber Heard.Johnny Depp is an American actor, producer and musician. He has appeared in films, television series and video games.",
-            date:'11-1-23',
-            type:'hollywood'
-          }
-    ])
+const { findAllFromDb } = require("../database/connection")
+
+const foodLatestPosts=async(req,res)=>{
+  try {
+    const foodLatestPosts=await findAllFromDb({},"foodLatestPosts")
+    return res.status(200).send({foodLatestPosts:foodLatestPosts})
+  } catch (error) {
+    console.log("Error occur in  fetching data",error)
+   return res.status(500).send({message:"something went wrong"})
+  }
 }
 
 
 
-const foodArticles=(req,res)=>{
-  res.send([{
-    id:1,
-    name:'lorem',
-    image:"https://tse1.mm.bing.net/th?q=Food+Fruit&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
-    descripition:"lorem dfgsbgr dfgfs gsf fbfgd",
-    date:"17-1-23"
-  },
-  {
-    id:1,
-    name:'lorem',
-    image:"https://tse1.mm.bing.net/th?q=Food+Fruit&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
-    descripition:"lorem dfgsbgr dfgfs gsf fbfgd",
-    date:"17-1-23"
-  },
-  {
-    id:1,
-    name:'lorem',
-    image:"https://tse1.mm.bing.net/th?q=Food+Fruit&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
-    descripition:"lorem dfgsbgr dfgfs gsf fbfgd",
-    date:"17-1-23"
-  }])
+const foodArticles=async(req,res)=>{
+  try {
+    const foodArticles=await findAllFromDb({},"foodArticles")
+    return res.status(200).send({foodArticles:foodArticles})
+  } catch (error) {
+    console.log("Error occur in  fetching data",error)
+   return res.status(500).send({message:"something went wrong"})
+  }
 }
 
 
-const foodPosts=(req,res)=>{
-  res.send([
-    {
-    id:1,
-    number:'2',
-    image:"https://tse1.mm.bing.net/th?q=Food+Fruit&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
-    name:"lorem",
-    date:"17-1-23"
-    },
-    {
-      id:2,
-      number:'3',
-      image:"https://tse1.mm.bing.net/th?q=Food+Fruit&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
-      name:"lorem",
-      date:"17-1-23"
-    },
-    {
-        id:3,
-        number:'4',
-        image:"https://tse1.mm.bing.net/th?q=Food+Fruit&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
-        name:"lorem",
-        date:"17-1-23"
-    }
-
-])
+const foodPosts=async(req,res)=>{
+  try {
+    const foodPosts=await findAllFromDb({},"foodPosts")
+    return res.status(200).send({foodPosts:foodPosts})
+  } catch (error) {
+    console.log("Error occur in  fetching data",error)
+   return res.status(500).send({message:"something went wrong"})
+  }
 }
 
-const foodSidePost=(req,res)=>{
-  res.send([{
-    id:1,
-    number:'2',
-    image:"https://tse1.mm.bing.net/th?q=Food+Fruit&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
-    title:"lorem",
-    content:'lorem fvfsbvfsdb fvdics dvdufdsjn'
-  }])
+const foodSidePost=async(req,res)=>{
+  try {
+    const foodSidePost=await findAllFromDb({},"foodSidePost")
+    return res.status(200).send({foodSidePost:foodSidePost})
+  } catch (error) {
+    console.log("Error occur in  fetching data",error)
+   return res.status(500).send({message:"something went wrong"})
+  }
 }
 
-const foodStories=(req,res)=>{
-  res.send([
-    {
-    id:1,
-    name:'lorem',
-    content:'Interstellar is a 2014 epic science fiction film co-written, directed, and produced by Christopher Nolan. It stars Matthew McConaughey, Anne Hathaway, Jessica Chastain, Bill Irwin, Ellen Burstyn, Matt Damon, and Michael Caine.',
-    date:'17-1-23',
-    },
-    {
-      id:2,
-      name:'lorem',
-      content:'Interstellar is a 2014 epic science fiction film co-written, directed, and produced by Christopher Nolan. It stars Matthew McConaughey, Anne Hathaway, Jessica Chastain, Bill Irwin, Ellen Burstyn, Matt Damon, and Michael Caine.',
-      date:'17-1-23',
-      },
-      {
-        id:3,
-        name:'lorem',
-        content:'Interstellar is a 2014 epic science fiction film co-written, directed, and produced by Christopher Nolan. It stars Matthew McConaughey, Anne Hathaway, Jessica Chastain, Bill Irwin, Ellen Burstyn, Matt Damon, and Michael Caine.',
-        date:'17-1-23',
-        },
-])
+const foodStories=async(req,res)=>{
+  try {
+    const foodStories=await findAllFromDb({},"foodStories")
+    return res.status(200).send({foodStories:foodStories})
+  } catch (error) {
+    console.log("Error occur in  fetching data",error)
+   return res.status(500).send({message:"something went wrong"})
+  }
 }
 
 module.exports.getfoodLatesPosts=foodLatestPosts;
